@@ -22,8 +22,19 @@ function tiled_pages_handler_function ($atts) {
   $colour = $atts['colour'] ?? $atts['color'] ?? '#f0f0f0';
   $output = '<div class="tiled-pages" style="display: flex; flex-wrap: wrap; gap: 10px;">';
   $pages = get_pages();
+  if ($atts['order'] == 'desc') { 
+    // Sort the pages in descending order
+    usort($pages, function($a, $b) {
+      return $b->menu_order - $a->menu_order;
+    });
+  } else if ($atts['order'] == 'asc') {
+    // Sort the pages in ascending order
+    usort($pages, function($a, $b) {
+      return $a->menu_order - $b->menu_order;
+    });
+  }
   foreach ($pages as $page){
-    $output .= '<div style="flex: 0 0 200px; height: 75px; background-color: ' . $colour . '; display: flex; align-items: center; justify-content: center; text-align: center;">';
+    $output .= '<div style="flex: 0 0 150px; height: 75px; background-color: ' . $colour . '; display: flex; align-items: center; justify-content: center; text-align: center;">';
     $output .= '<a href="' . get_page_link($page->ID) . '" style="text-decoration: none; color: #333; padding: 10px;">' . 
                $page->post_title . '</a>';
     $output .= '</div>';
