@@ -22,12 +22,12 @@ function tiled_pages_handler_function ($atts) {
   $colour = $atts['colour'] ?? $atts['color'] ?? '#f0f0f0';
   $output = '<div class="tiled-pages" style="display: flex; flex-wrap: wrap; gap: 10px;">';
   $pages = get_pages();
-  if ($atts['order'] == 'desc') { 
+  if (isset($atts['order']) && $atts['order'] == 'desc') { 
     // Sort the pages in descending order
     usort($pages, function($a, $b) {
       return $b->menu_order - $a->menu_order;
     });
-  } else if ($atts['order'] == 'asc') {
+  } elseif ($atts['order'] == 'asc') {
     // Sort the pages in ascending order
     usort($pages, function($a, $b) {
       return $a->menu_order - $b->menu_order;
