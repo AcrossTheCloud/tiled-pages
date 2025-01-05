@@ -1,14 +1,15 @@
 <?php
 /**
  * @package Tiled Pages
- * @version 0.1
+ * @version 0.2
  */
 /*
 Plugin Name: Tiled Pages
-Plugin URI: http://wordpress.org/plugins/hello-dolly/
+Plugin URI: https://github.com/AcrossTheCloud/tiled-pages
 Description: Provides links to the list of pages in a tiled format.
 Author: Matthew Berryman
-Version: 0.1
+Version: 0.2
+License: GPLv3
 Author URI: https://github.com/matthewberryman
 */
 
