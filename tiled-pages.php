@@ -13,7 +13,7 @@ Author URI: https://github.com/matthewberryman
 */
 
 function shortcodes_init(){
-  add_shortcode('tiled)pages', 'tiled_pages_handler_function' );
+  add_shortcode('tiled_pages', 'tiled_pages_handler_function' );
 }
 add_action('init', 'shortcodes_init');
 
