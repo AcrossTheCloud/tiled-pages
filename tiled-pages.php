@@ -25,14 +25,14 @@ function tiled_pages_handler_function ($atts) {
   $output = '<div class="tiled-pages" style="display: flex; flex-wrap: wrap; gap: 10px;">';
   $pages = get_pages();
   if (isset($atts['order']) && strtolower($atts['order']) === 'desc') {
-    // Sort the pages in descending order
+    // Sort the pages in descending order by title
     usort($pages, function($a, $b) {
-      return $b->menu_order - $a->menu_order;
+      return strcasecmp($b->post_title, $a->post_title);
     });
   } elseif ($atts['order'] == 'asc') {
-    // Sort the pages in ascending order
+    // Sort the pages in ascending order by title
     usort($pages, function($a, $b) {
-      return $a->menu_order - $b->menu_order;
+      return strcasecmp($a->post_title, $b->post_title);
     });
   }
   foreach ($pages as $page){
