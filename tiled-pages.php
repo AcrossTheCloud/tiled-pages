@@ -23,7 +23,10 @@ function tiled_pages_handler_function ($atts) {
   $raw_colour = $atts['colour'] ?? $atts['color'] ?? '#f0f0f0';
   $colour = preg_match('/^#[a-f0-9]{6}$/i', $raw_colour) ? $raw_colour : '#f0f0f0';
   $output = '<div class="tiled-pages" style="display: flex; flex-wrap: wrap; gap: 10px;">';
-  $pages = get_pages();
+  // Modified to only get published pages
+  $pages = get_pages(array(
+    'post_status' => 'publish'
+  ));
   if (isset($atts['order']) && strtolower($atts['order']) === 'desc') {
     // Sort the pages in descending order by title
     usort($pages, function($a, $b) {
